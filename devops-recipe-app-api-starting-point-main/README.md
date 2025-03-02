@@ -14,7 +14,7 @@
 
 <br /><br >
 
-# DevOps Deployment Automation with Terraform, AWS and Docker - Starter Code
+# DevOps Deployment Automation with Terraform, AWS and Docker - Starter Code 
 
 This project contains the starter code for our course: [DevOps Deployment Automation with Terraform, AWS and Docker](https://londonapp.dev/c3).
 
@@ -116,7 +116,7 @@ docker compose run --rm terraform -chdir=TF_DIR COMMAND
 
 Where `TF_DIR` is the directory containing the Terraform (`setup` or `deploy`) and `COMMAND` is the Terraform command (e.g. `plan`).
 
-#### Get outputs from the setup Terraform
+#### Get outputs from the setup Terraform 
 
 ```
 docker compose run --rm terraform -chdir=setup output
