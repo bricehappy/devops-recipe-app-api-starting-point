@@ -1,22 +1,20 @@
-#####################################################################
-#Create IAM User and policies for continuous deployment (CD) account#
-#####################################################################
-
+#######################################################################
+# Create IAM user and policies for Continuous Deployment (CD) account #
+#######################################################################
 
 resource "aws_iam_user" "cd" {
-
   name = "recipe-app-api-cd"
-
 }
 
 resource "aws_iam_access_key" "cd" {
-
   user = aws_iam_user.cd.name
-
 }
 
-data "aws_iam_policy_document" "tf_backend" {
+#########################################################
+# Policy for Teraform backend to S3 and DynamoDB access #
+#########################################################
 
+data "aws_iam_policy_document" "tf_backend" {
   statement {
     effect    = "Allow"
     actions   = ["s3:ListBucket"]
@@ -31,7 +29,6 @@ data "aws_iam_policy_document" "tf_backend" {
       "arn:aws:s3:::${var.tf_state_bucket}/tf-state-deploy-env/*"
     ]
   }
-
   statement {
     effect = "Allow"
     actions = [
@@ -40,26 +37,19 @@ data "aws_iam_policy_document" "tf_backend" {
       "dynamodb:PutItem",
       "dynamodb:DeleteItem"
     ]
-    resources = [
-      "arn:aws:dynamodb:*:*:table/${var.tf_state_lock_table}"
-    ]
+    resources = ["arn:aws:dynamodb:*:*:table/${var.tf_state_lock_table}"]
   }
-
 }
 
 resource "aws_iam_policy" "tf_backend" {
-
   name        = "${aws_iam_user.cd.name}-tf-s3-dynamodb"
-  description = "Allow user to use s3 and dynamodb for TF Backend Services"
+  description = "Allow user to use S3 and DynamoDB for TF backend resources"
   policy      = data.aws_iam_policy_document.tf_backend.json
-
 }
 
 resource "aws_iam_user_policy_attachment" "tf_backend" {
-
   user       = aws_iam_user.cd.name
   policy_arn = aws_iam_policy.tf_backend.arn
-
 }
 
 #########################
@@ -80,9 +70,7 @@ data "aws_iam_policy_document" "ecr" {
       "ecr:UploadLayerPart",
       "ecr:InitiateLayerUpload",
       "ecr:BatchCheckLayerAvailability",
-      "ecr:PutImage",
-      "ecr:GetDownloadUrlForLayer",
-      "ecr:BatchGetImage"
+      "ecr:PutImage"
     ]
     resources = [
       aws_ecr_repository.app.arn,
