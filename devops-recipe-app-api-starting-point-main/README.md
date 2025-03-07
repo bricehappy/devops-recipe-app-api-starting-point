@@ -35,7 +35,7 @@ Follow the below steps to run a local development environment.
 2.  Clone the project, `cd` to it in Terminal/Command Prompt and run the following:
 
 ```sh
-docker compose up
+docker compose up 
 ```
 
 3.  Browse the project at [http://127.0.0.1:8000/api/health-check/](http://127.0.0.1:8000/api/health-check/)
