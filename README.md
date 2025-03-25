@@ -40,7 +40,7 @@ docker compose up
 
 3.  Browse the project at [http://127.0.0.1:8000/api/health-check/](http://127.0.0.1:8000/api/health-check/)
 
-### Creating Superuser
+### Creating Superuser (Y)
 
 To create a superuser to access the Django admin follow these steps.
 
