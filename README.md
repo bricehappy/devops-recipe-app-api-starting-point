@@ -61,7 +61,7 @@ docker compose down --volumes
 docker compose up
 ```
 
-## Course Documentation 
+## Course Documentation
 
 This section contains supplementary documentation for the course steps.
 
