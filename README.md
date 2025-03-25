@@ -67,7 +67,7 @@ This section contains supplementary documentation for the course steps.
 
 ### AWS CLI
 
-#### AWS CLI Authentication
+#### AWS CLI Authentication 
 
 This course uses [aws-vault](https://github.com/99designs/aws-vault) to authenticate with the AWS CLI in the terminal.
 
