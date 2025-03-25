@@ -37,6 +37,7 @@ resource "aws_lb" "api" {
 }
 
 resource "aws_lb_target_group" "api" {
+  depends_on  = [aws_lb.api]
   name        = "${local.prefix}-api"
   protocol    = "HTTP"
   vpc_id      = aws_vpc.main.id
