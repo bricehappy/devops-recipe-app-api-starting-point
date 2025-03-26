@@ -135,7 +135,8 @@ data "aws_iam_policy_document" "ec2" {
       "ec2:ModifyVpcAttribute",
       "ec2:RevokeSecurityGroupIngress",
       "ec2:DescribeAvailabilityZones",
-      "ec2:DescribeAccountAttributes"
+      "ec2:DescribeAccountAttributes",
+      "ec2:DescribeNetworkInterfaceAttribute"
     ]
     resources = ["*"]
   }
@@ -351,8 +352,7 @@ data "aws_iam_policy_document" "efs" {
       "elasticfilesystem:CreateMountTarget",
       "elasticfilesystem:CreateAccessPoint",
       "elasticfilesystem:CreateFileSystem",
-      "elasticfilesystem:TagResource",
-      "ec2:DescribeNetworkInterfaceAttribute"
+      "elasticfilesystem:TagResource"
     ]
     resources = ["*"]
   }
